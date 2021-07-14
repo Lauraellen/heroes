@@ -1,6 +1,13 @@
-<div class="col-md-12 div-geral-page">    
-    <div class="content-heading">    
-        <h2>Example of ngx-datatable</h2>    
-    </div>    
-    
-</div>    
+<div class="col-md-12 div-geral-page">
+    <div class="content-heading" style="text-align: center;">    
+        <h2>Escolha 5 personagens</h2>    
+    </div>
+    <div class="content">
+        <ngx-datatable class="bootstrap" [columnMode]="'force'" [footerHeight]="50" [rowHeight]="'auto'"    
+        [scrollbarV]="false" [rows]='ngxDatatablePagination.rows' [count]="ngxDatatablePagination.totalCount" [limit]="ngxDatatablePagination.size">    
+            <ngx-datatable-column name="ID" prop="id"></ngx-datatable-column>    
+            <ngx-datatable-column name="Nome" prop="name"></ngx-datatable-column> 
+        </ngx-datatable>
+    </div>  
+</div>  
+

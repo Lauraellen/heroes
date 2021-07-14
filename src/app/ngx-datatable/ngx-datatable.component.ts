@@ -10,9 +10,8 @@ import { NgxDatatablePagination } from 'src/app/ngx-datatable/ngx-datatable.pagi
 })
 export class NgxDatatableComponent implements OnInit {
 
-  name: any;
+  name: string;
   ngxDatatablePagination: NgxDatatablePagination;
-  
 
   constructor(
     @Inject(HeroService) private heroService,
@@ -42,9 +41,9 @@ export class NgxDatatableComponent implements OnInit {
   searchPage(): void {
     this.heroService.getHeroes(this.ngxDatatablePagination.pageNumber, this.ngxDatatablePagination.pageSize)
       .subscribe(data => {
-        console.log(data);
+        console.log(data.data);
         this.ngxDatatablePagination.rows = [... data.data.results];
-        this.ngxDatatablePagination.totalCount = data.headers.get('X-Total-Count');
+        this.ngxDatatablePagination.totalCount = data.data.count;
       }, (error) => {
         'Erro, tabela vazia';
       });
