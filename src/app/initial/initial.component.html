@@ -1,11 +1,15 @@
-<h1>Tela Inicial</h1>
 
-
-<div class="row">
-    <div class="col-xs-12">
-     <ul class="nav nav-pills">
-      <li routerLinkActive="active"> <a [routerLink]="['/heroes']" >Heroes</a></li>
-      <li routerLinkActive="active"> <a [routerLink]="['/details']" >Details</a></li>
-     </ul>
-   </div>
+<div class="background-image">
+  <div class="content">
+    <h1>Marvel</h1>
+    <div>
+       <button type="button" class="btn btn-block btn-warning butao-acao" placement="bottom" container="body"
+        (click)="choiceHeroes()">
+        <span class="fas fa-edit"></span> Escolha seus personagens!
+      </button>
+    </div>
+  </div>
 </div>
+
+
+
