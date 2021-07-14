@@ -8,18 +8,24 @@ import { InitialComponent } from './initial/initial.component';
 import { DetailsComponent } from './details/details.component';
 import { HeroService } from './hero.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { NgxDatatableComponent } from './ngx-datatable/ngx-datatable.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeroesComponent,
     InitialComponent,
-    DetailsComponent
+    DetailsComponent,
+    NgxDatatableComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    NgxPaginationModule,
+    NgxDatatableModule
   ],
   providers: [
   ],
