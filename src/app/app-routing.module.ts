@@ -5,7 +5,7 @@ import { HeroesComponent } from './heroes/heroes.component';
 
 
 const routes: Routes = [
-    { path: '', redirectTo: '/initial', pathMatch: 'full' },
+    { path: '', redirectTo: 'initial', pathMatch: 'full' },
     { path: 'heroes', component: HeroesComponent },
     { path: 'details', component: DetailsComponent }
 ];
