@@ -10,14 +10,17 @@ import { NgxDatatablePagination } from 'src/app/ngx-datatable/ngx-datatable.pagi
 })
 export class NgxDatatableComponent implements OnInit {
 
+  offset: number = 0;
   name: string;
   ngxDatatablePagination: NgxDatatablePagination;
+  content: any;
 
   constructor(
     @Inject(HeroService) private heroService,
 
   ) { 
     this.resetPagination();
+    this.content = [];
 
   }
 
@@ -35,19 +38,31 @@ export class NgxDatatableComponent implements OnInit {
   setPage(pageInfo) {
     this.ngxDatatablePagination.pageSize = pageInfo.pageSize;
     this.ngxDatatablePagination.pageNumber = pageInfo.offset;
-    this.searchPage();
+    //this.searchPage();
+   // console.log(this.ngxDatatablePagination.pageNumber)
+
+    if ( this.ngxDatatablePagination.pageNumber !== 0) {
+      this.offset = this.offset + 30;
+      this.ngxDatatablePagination.pageSize = this.ngxDatatablePagination.pageSize*3;
+      this.searchPage();
+    }
   }
 
   searchPage(): void {
-    this.heroService.getHeroes(this.ngxDatatablePagination.pageNumber, this.ngxDatatablePagination.pageSize)
+    this.heroService.getHeroes(this.offset, this.ngxDatatablePagination.pageSize)
       .subscribe(data => {
-        console.log(data.data);
-        this.ngxDatatablePagination.rows = [... data.data.results];
+       // console.log(data.data);
+        this.content.push(...data.data.results);
+        
+        this.ngxDatatablePagination.rows = [... this.content];
         this.ngxDatatablePagination.totalCount = data.data.count;
       }, (error) => {
         'Erro, tabela vazia';
       });
+
+      // console.log(this.content)
   }
+
 
 }  
 

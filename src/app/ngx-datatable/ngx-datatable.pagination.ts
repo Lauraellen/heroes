@@ -2,12 +2,12 @@ export class NgxDatatablePagination {
     rows: any = [];  
     totalCount: Number;  
     closeResult: string;  
-    pageSize: Number;
-    pageNumber: Number;
+    pageSize: number;
+    pageNumber: number;
     size: Number;
 
     constructor() {
-        this.pageSize = 10;
+        this.pageSize = 30;
         this.pageNumber = 0;
         this.size = 10;
         this.totalCount = 0;
