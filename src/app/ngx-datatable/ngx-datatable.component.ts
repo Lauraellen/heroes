@@ -149,6 +149,7 @@ export class NgxDatatableComponent implements OnInit {
   }
 
   detailsHeroes(): void {
+    console.log(this.selected)
     this.statusForm = 3;
   }
 }  
