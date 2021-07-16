@@ -4,7 +4,7 @@ body {
 
 .background-image{
     width: 100%;
-    height: 500px;
+    height: 600px;
     background-image: url(/assets/image/Universo_Marvel.png);
     background-repeat: repeat-x;
     background-attachment: scroll;
@@ -30,4 +30,13 @@ button {
 h1 {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
+    color: red;
+}
+
+
+.titleMarvel {
+    background-color: black;
+    position: relative;
+    border-radius: 15px;
+    
 }

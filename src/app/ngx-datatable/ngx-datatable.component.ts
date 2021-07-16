@@ -1,9 +1,8 @@
 import { Component, Inject, OnInit, ViewChild } from '@angular/core';
-import { NgxDatatableService} from 'src/app/ngx-datatable/ngx-datatable.service';
 import { HeroService } from '../hero.service';
 import { NgxDatatablePagination } from 'src/app/ngx-datatable/ngx-datatable.pagination';
 import { ColumnMode, DatatableComponent } from '@swimlane/ngx-datatable';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 
 @Component({
@@ -21,27 +20,23 @@ export class NgxDatatableComponent implements OnInit {
   filter: any;
   nameComics: any;
   ColumnMode: any;
-  nameHeroe: any;
-  heroesForm: FormGroup;
   columns = []
   selected = [];
   statusForm: number;
-  image: any;
-  details: any;
-  series: any;
+  heroe: any;
+  comics: any;
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
   constructor(
     @Inject(HeroService) private heroService,
-    private router: Router,
 
   ) { 
     this.resetPagination();
+    this.heroe = [];
     this.content = [];
     this.filter = [];
     this.nameComics = [];
     this.ColumnMode = ColumnMode;
-    this.details = [];
     this.columns = [
       {
         prop: 'selected',
@@ -67,7 +62,6 @@ export class NgxDatatableComponent implements OnInit {
 
   
   ngOnInit() {    
-    //this.getAllHeroList();
     this.searchPage();
   }
 
@@ -87,7 +81,6 @@ export class NgxDatatableComponent implements OnInit {
     this.statusForm = 1;
     this.heroService.getHeroes(this.offset, this.ngxDatatablePagination.pageSize)
       .subscribe(data => {
-       // console.log(data.data);
         this.content.push(...data.data.results);
         this.filter = [... this.content];
         this.ngxDatatablePagination.rows = [... this.content];
@@ -96,11 +89,9 @@ export class NgxDatatableComponent implements OnInit {
         'Erro, tabela vazia';
       });
 
-      //console.log(this.content)
   }
 
   updateFilter(event) {
-    console.log(event)
     const val = event.target.value.toLowerCase();
 
     const filter = this.filter.filter(function (d) {
@@ -154,23 +145,11 @@ export class NgxDatatableComponent implements OnInit {
 
   add(): void {
     this.statusForm = 2;
-    //this.router.navigate(['/heroes']);
-    console.log(this.content)
-    this.selected.forEach(th => {
-      console.log(this.selected)
-      this.image = th.thumbnail.path;
-      console.log(this.image)
 
-      this.details = th;
-
-    });
-    console.log(this.details)
   }
 
-  
   detailsHeroes(): void {
     this.statusForm = 3;
-    
   }
 }  
 

@@ -20,4 +20,13 @@ export class HeroService {
       '&limit=' + limit + '&offset=' + offset);
     
   }
+
+  getComics(id: any): Observable<any> {
+    const apiKey = '612f3c5e79e32aae7dcafe95140d862f';
+    const url = 'https://gateway.marvel.com:443';
+    const hash = 'd0d9dec7afc714e672ab2f1800d4ad60';
+
+    return this.http.get<any>(url + '/v1/public/characters/' + id + '/comics?ts=2&apikey=' + apiKey +
+      '&hash=' + hash);
+  }
 }
