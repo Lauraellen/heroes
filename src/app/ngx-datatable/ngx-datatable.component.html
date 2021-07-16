@@ -38,7 +38,51 @@
 </div>
 <div *ngIf="statusForm == 2">
     <div class="heroes">
+        <div *ngFor="let d of selected">
             
+                <div class="text">
+                  {{d.name}}
+                </div>
+                <img src="{{d.thumbnail.path}}.png">
+        </div>
+        
+        
+        <button type="button" id="botao" class="btn btn-block btn-warning butao-acao" placement="bottom" container="body"
+            (click)="detailsHeroes()" style="background-color: red; margin-top: 0;">
+            <span class="fas fa-edit"></span> Veja mais detalhes!
+        </button>
+        
+    </div>
+</div>
+
+<div *ngIf="statusForm == 3">
+    <div class="details">
+        <div *ngFor="let d of selected">
+            <div class="columns">
+                <div class="text">
+                    <h3> <a href="{{d.urls[1].url}}"> {{d.name}}</a></h3>
+                    <h4 style="color: black;"> Series</h4>
+                    <div *ngIf="d.series.items.length == 0">
+                        <li>Esse personagem não tem series.</li>
+                    </div>
+                    <div *ngIf="d.series.items.length > 0">
+                      <li>{{d.series.items[0].name}}</li>
+                      <li>{{d.series.items[1].name}}</li>
+                    </div>
+                    <h4 style="color: black;"> Comicons</h4>
+                    <div *ngIf="d.comics.items.length == 0">
+                        <li>Esse personagem não tem series.</li>
+                    </div>
+                    <div *ngIf="d.comics.items.length > 0">
+                      <li>{{d.comics.items[0].name}}</li>
+                      <li>{{d.comics.items[1].name}}</li>
+                    </div>
+                  </div>
+            </div>
+                
+                
+        </div>
+        
     </div>
 </div>
 

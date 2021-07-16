@@ -13,6 +13,7 @@ import { Router } from '@angular/router';
 })
 export class NgxDatatableComponent implements OnInit {
 
+  element: HTMLImageElement;
   offset: number = 0;
   name: string;
   ngxDatatablePagination: NgxDatatablePagination;
@@ -24,7 +25,10 @@ export class NgxDatatableComponent implements OnInit {
   heroesForm: FormGroup;
   columns = []
   selected = [];
-  statusForm: number; 
+  statusForm: number;
+  image: any;
+  details: any;
+  series: any;
 
   @ViewChild(DatatableComponent) table: DatatableComponent;
   constructor(
@@ -37,6 +41,7 @@ export class NgxDatatableComponent implements OnInit {
     this.filter = [];
     this.nameComics = [];
     this.ColumnMode = ColumnMode;
+    this.details = [];
     this.columns = [
       {
         prop: 'selected',
@@ -64,7 +69,6 @@ export class NgxDatatableComponent implements OnInit {
   ngOnInit() {    
     //this.getAllHeroList();
     this.searchPage();
-   
   }
 
   setPage(pageInfo) {
@@ -108,8 +112,6 @@ export class NgxDatatableComponent implements OnInit {
   }
 
   onSelect(row) {
-    console.log(row)
-    console.log(this.selected)
     if (this.selected.length === 5) {
       this.columns = [
         {
@@ -153,9 +155,23 @@ export class NgxDatatableComponent implements OnInit {
   add(): void {
     this.statusForm = 2;
     //this.router.navigate(['/heroes']);
+    console.log(this.content)
+    this.selected.forEach(th => {
+      console.log(this.selected)
+      this.image = th.thumbnail.path;
+      console.log(this.image)
+
+      this.details = th;
+
+    });
+    console.log(this.details)
   }
 
   
+  detailsHeroes(): void {
+    this.statusForm = 3;
+    
+  }
 }  
 
 
