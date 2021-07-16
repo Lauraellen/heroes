@@ -11,6 +11,7 @@ import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { NgxPaginationModule } from 'ngx-pagination';
 import { NgxDatatableComponent } from './ngx-datatable/ngx-datatable.component';
 import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -18,14 +19,17 @@ import { NgxDatatableModule } from '@swimlane/ngx-datatable';
     HeroesComponent,
     InitialComponent,
     DetailsComponent,
-    NgxDatatableComponent
+    NgxDatatableComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
-    NgxDatatableModule
+    NgxDatatableModule,
+    FormsModule,
+    ReactiveFormsModule
+
   ],
   providers: [
   ],

@@ -1,14 +1,44 @@
 <div class="col-md-12 div-geral-page">
-    <div class="content-heading" style="text-align: center;">    
-        <h2>Escolha 5 personagens</h2>    
+    <div *ngIf="statusForm == 1">
+        <div class="content-heading" style="text-align: center;">    
+            <h2>Escolha 5 personagens</h2>    
+        </div>
+
+        <input type="text" style="padding:8px;margin:15px auto;width:30%;"
+        placeholder="Type to filter the name column..." (keyup)="updateFilter($event)"/>
+
+        <div class="content">
+            <ngx-datatable class="bootstrap" [columns]="columns" [columnMode]="ColumnMode.force" [footerHeight]="50" [rowHeight]="'auto'"    
+            [scrollbarV]="false" [rows]='ngxDatatablePagination.rows' [count]="ngxDatatablePagination.totalCount" 
+            [limit]="ngxDatatablePagination.size" (page)="setPage($event)" [selected]="selected"
+            [selectionType]="'checkbox'"
+            [selectAllRowsOnPage]="false"
+            (select)='onSelect($event)'>  
+        
+            </ngx-datatable>
+        </div>
+
+        <div>
+            <button type="button" class="btn btn-block btn-warning butao-acao" placement="bottom" container="body"
+            (click)="remove()" style="background-color: red;">
+            <span class="fas fa-edit"></span> Remova os personagens selecionados
+        </button>
+        </div>
+
+        <div *ngIf="selected.length === 5">
+            <div>
+                <button type="button" id="botao" class="btn btn-block btn-warning butao-acao" placement="bottom" container="body"
+                (click)="add()" style="background-color: green;">
+                <span class="fas fa-edit"></span> Já escolhi meus personagens!
+            </button>
+            </div>
+        </div>
+        
     </div>
-    <div class="content">
-        <ngx-datatable class="bootstrap" [columnMode]="'force'" [footerHeight]="50" [rowHeight]="'auto'"    
-        [scrollbarV]="false" [rows]='ngxDatatablePagination.rows' [count]="ngxDatatablePagination.totalCount" 
-        [limit]="ngxDatatablePagination.size" (page)="setPage($event)">    
-        <ngx-datatable-column name="ID" prop="id"></ngx-datatable-column>    
-            <ngx-datatable-column name="Nome" prop="name"></ngx-datatable-column> 
-        </ngx-datatable>
-    </div>  
-</div>  
+</div>
+<div *ngIf="statusForm == 2">
+    <div class="heroes">
+            
+    </div>
+</div>
 

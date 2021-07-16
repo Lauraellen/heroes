@@ -7,7 +7,7 @@ export class NgxDatatablePagination {
     size: Number;
 
     constructor() {
-        this.pageSize = 30;
+        this.pageSize = 100;
         this.pageNumber = 0;
         this.size = 10;
         this.totalCount = 0;
